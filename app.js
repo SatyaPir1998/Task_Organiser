@@ -3,32 +3,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const taskList = document.getElementById('taskList');
     let tasks = [];
 
-    // Function to add a task
     function addTask(task) {
         const li = document.createElement('li');
         li.textContent = task;
 
-        // Create a span element for the timer
         const timerSpan = document.createElement('span');
         timerSpan.className = 'timer';
         timerSpan.textContent = '00:00';
 
-        // Add click event listener to start/stop timer
         li.addEventListener('click', function() {
             toggleTimer(li, timerSpan);
         });
 
-        // Append timerSpan to the list item
         li.appendChild(timerSpan);
 
-        // Append list item to the taskList
         taskList.appendChild(li);
 
-        // Add task to the tasks array
         tasks.push({ task: task, timer: null, seconds: 0 });
     }
 
-    // Function to toggle timer
+   
     function toggleTimer(li, timerSpan) {
         const index = Array.from(taskList.children).indexOf(li);
         const task = tasks[index];
@@ -46,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Listen for Enter key press to add a task
+    // add a task
     taskInput.addEventListener('keydown', function(event) {
         if (event.key === 'Enter' && event.target.value.trim() !== '') {
             addTask(event.target.value.trim());
